@@ -1,0 +1,45 @@
+{% load static %}
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Boostrap CSS & JS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- App's CSS & JS -->
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navigation_bar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/return_to_top.css' %}">
+    <script src="{% static 'js/return_to_top.js' %}"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Handlee&display=swap" rel="stylesheet">
+    <!-- Glyphicon Chevron-Up Icon Need the font-awesome.css -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Web Extra Head -->
+    {% block web-extra-head %}
+    {% endblock %}
+  </head>
+  <body>
+    <div id="layout-container">
+      <div id="layout-content-wrap">
+        <!-- Navigation Bar -->
+        {% include 'navigation.html' %}
+        <!-- Other Content -->
+        {% block web-extra-content %}
+        {% endblock %}
+        <!-- Return To Top Button-->
+        <a href="#" id="return-to-top-button"><i class="fa fa-chevron-up"></i></a>
+        <!-- Copyright Footer -->
+        <footer id="layout-footer">
+          <p class="font-11 text-center mt-30 letter-space-2 text-black-light">
+            Copyright ©2019. All Rights Reserved
+          </p>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>

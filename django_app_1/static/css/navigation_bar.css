@@ -1,0 +1,5 @@
+/* navigation bar item link */
+.navbar-nav a.nav-link {
+  font-size: 1.75em; /* default text size in browsers is 1em = 16px */
+  font-family: 'Handlee', cursive; /* Google fonts: https://fonts.google.com */
+}

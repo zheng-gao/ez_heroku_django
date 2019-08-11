@@ -1,0 +1,40 @@
+###################################################################################################
+# ---------------------------------------- Dev Env Notes ---------------------------------------- #
+###################################################################################################
+./controller.sh --help
+
+# Run Full Dev Process
+./controller.sh -o ALL
+
+# Update requirements before pushing to remote
+./controller.sh -o update
+
+###################################################################################################
+# ---------------------------------------- Heroku Notes ----------------------------------------- #
+###################################################################################################
+# https://devcenter.heroku.com/articles/getting-started-with-python#deploy-the-app
+
+# Create Hero Remote
+heroku create $HEROKU_APP_NAME
+
+# Push Code
+git push heroku master
+
+# Heroku Migrate
+heroku run python manage.py migrate -a $HEROKU_APP_NAME (ez-beauty)
+
+# Heroku Sync DB
+heroku run python manage.py syncdb
+
+# Heroku Create DB super user
+heroku run python manage.py createsuperuser
+
+# Scaling Web
+heroku ps:scale web=1
+
+# Open Web
+heroku open
+
+# Debug Heroku
+heroku logs --tail
+

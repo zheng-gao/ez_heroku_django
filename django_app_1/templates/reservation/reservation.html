@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block web-extra-head %}
+  <link rel="stylesheet" href="{% static 'css/reservation_form.css' %}">
+  <title>Reservation</title>
+  {{ form.media }}
+  <style type="text/css">
+    span.required-label-with-asterisk:before { content:"*"; color:red; }
+  </style>
+{% endblock %}
+
+{% block web-extra-content %}
+<div class="container">
+  <form method="post">
+    {% csrf_token %}
+    <br>
+    {% for field in form %}
+      <div class="form-group">
+        <label for="{{ field.auto_id }}">
+          {% if field.field.required %}
+            <span class="required-label-with-asterisk">
+              {{ field.label_tag }}
+            </span>
+          {% else %}
+            {{ field.label_tag }}
+          {% endif %}
+        </label>
+        {{ field }}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary btn-lg btn-block">Reserve</button>
+  </form>
+  <br><br>
+</div>
+{% endblock %}

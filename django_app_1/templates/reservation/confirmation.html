@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block web-extra-head %}
+  <title>Confirmation</title>
+{% endblock %}
+
+{% block web-extra-content %}
+<br>
+<style>
+img.image-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+</style>
+<div class="container">
+    <img class="image-center" src="{% static 'img/reservation/yes_circle_black.png' %}" alt="Complete!" style="width:20%;height:20%">
+    <br>
+    <h3 style="text-align:center;">Your reservation is complete !</h3>
+    <p style="text-align:center;">Thank you for visiting our site</p>
+</div>
+
+{% endblock %}
