@@ -124,6 +124,8 @@ function control_clean() {
     ez_print_log -m "Running \"clean\" ..."
     ez_print_log -m "Removing python \"venv\" ..."
     ${cmd_rm} -rf "${BASE_DIRECTORY}/.venv"
+    ez_print_log -m "Removing \"staticfiles\" ..."
+    ${cmd_rm} -rf "${BASE_DIRECTORY}/staticfiles"
 }
 
 function control_build() {
