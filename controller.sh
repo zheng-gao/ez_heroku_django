@@ -197,6 +197,9 @@ function control_update() {
 ###################################################################################################
 function control_heroku() {
     ez_print_log -m "Running \"${FUNCNAME[0]}\" ..."
+    local django_project_name=""
+    read -p "Django Project Name: " django_project_name
+    echo "web: gunicorn ${django_project_name}.wsgi --log-file -" > "${BASE_DIRECTORY}/Procfile"
     local heroku_app_name=""
     read -p "Heroku Application Name: " heroku_app_name
     if git "remote" -v | grep "heroku"; then

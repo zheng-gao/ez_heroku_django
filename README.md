@@ -3,3 +3,4 @@
 ### Django Model: reservation
 
 ./controller.sh -o ALL
+./controller.sh -o heroku

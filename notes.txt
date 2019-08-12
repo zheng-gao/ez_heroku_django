@@ -14,6 +14,9 @@
 ###################################################################################################
 # https://devcenter.heroku.com/articles/getting-started-with-python#deploy-the-app
 
+# install heroku cli
+brew tap heroku/brew && brew install heroku
+
 # Create Hero Remote
 heroku create $HEROKU_APP_NAME
 
