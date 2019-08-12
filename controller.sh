@@ -126,6 +126,10 @@ function control_clean() {
     ${cmd_rm} -rf "${BASE_DIRECTORY}/.venv"
     ez_print_log -m "Removing \"staticfiles\" ..."
     ${cmd_rm} -rf "${BASE_DIRECTORY}/staticfiles"
+    ez_print_log -m "Removing \"*__pycache__/*\" ..."
+    for py_cache_path in $(find "${BASE_DIRECTORY}" -path "*__pycache__/*"); do
+        ${cmd_rm} -rf "${py_cache_path}"
+    done
 }
 
 function control_build() {
