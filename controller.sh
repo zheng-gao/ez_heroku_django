@@ -135,7 +135,18 @@ function control_build() {
     ez_print_log -m "Upgrading pip ..."
     pip "install" --upgrade "pip"
     ez_print_log -m "Installing requirements ..."
-    pip "install" -r "${BASE_DIRECTORY}/requirements.txt"
+    # pip "install" -r "${BASE_DIRECTORY}/requirements.txt"
+    # Some of the requirement may not fit dev environment, such as psycopg2 (used by postgresql)
+    local requirement=""; local ignore_list=("psycopg2" "django-heroku")
+    while read -r requirement; do
+        local skip_install=""
+        for item in "${ignore_list[@]}"; do
+            [[ "${requirement}" =~ "${item}=="* ]] && skip_install="True" && break
+        done
+        [[ "${skip_install}" = "True" ]]  && continue
+        ez_print_log -m "pip install ${requirement} ..."
+        pip "install" "${requirement}"
+    done < "${BASE_DIRECTORY}/requirements.txt"
     ez_print_log -m "Exiting python venv ..."
     deactivate
     ez_print_log -m "Touching ${DEV_LOCAL_ENVIRONMENT} to enable dev environment"
