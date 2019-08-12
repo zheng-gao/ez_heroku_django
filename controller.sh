@@ -16,7 +16,7 @@ cmd_tabs="/usr/bin/tabs";                             REQUIRED_COMMANDS+=("${cmd
 cmd_touch="/usr/bin/touch";                           REQUIRED_COMMANDS+=("${cmd_touch}")
 cmd_sed="/usr/bin/sed";                               REQUIRED_COMMANDS+=("${cmd_sed}")
 # Python Command
-cmd_python="/export/apps/python/3.7/bin/python3";     REQUIRED_COMMANDS+=("${cmd_python}")
+cmd_python=$(which python3);                          REQUIRED_COMMANDS+=("${cmd_python}")
 
 # Verify the reqired commands
 for cmd in ${REQUIRED_COMMANDS[@]}; do
